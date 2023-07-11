@@ -1,9 +1,11 @@
 package com.example.composepracticedemoapp
 
+import android.content.Intent
 import android.os.Bundle
-import android.system.Os.stat
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -13,10 +15,14 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -36,6 +42,11 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun SimpleView() {
+    val context = LocalContext.current
+    val fontFamily = FontFamily(
+        Font(R.font.raleway_black_italic, FontWeight.Light)
+    )
+
     var name by remember {
         mutableStateOf("")
     }
@@ -66,40 +77,71 @@ fun SimpleView() {
                 Text(text = "Add!")
             }
         }
-        Divider(modifier = Modifier.padding(0.dp,20.dp))
+        Divider(modifier = Modifier.padding(0.dp, 20.dp))
+
+        //Annotation string
         Text(
             buildAnnotatedString {
-                                 withStyle(
-                                     style = SpanStyle(
-                                         color = Color.Green,
-                                         fontSize = 40.sp
-                                     )
-                                 ){
-                                     append("J")
-                                 }
+                withStyle(
+                    style = SpanStyle(
+                        color = Color.Green,
+                        fontSize = 40.sp
+                    )
+                ) {
+                    append("J")
+                }
                 append("etpack ")
                 withStyle(
                     style = SpanStyle(
                         color = Color.Green,
                         fontSize = 40.sp
                     )
-                ){
+                ) {
                     append("C")
                 }
                 append("ompose")
             },
-        fontSize = 20.sp,
-        color = Color.Black)
+            fontSize = 20.sp,
+            fontFamily = fontFamily,
+            color = Color.Black,
+            modifier = Modifier
+                .clickable {}
+                .pointerInput(Unit) {
+                    detectTapGestures(
+                        onLongPress = {
+                            context.startActivity(
+                                Intent(
+                                    context,
+                                    BasicStateHandle::class.java
+                                )
+                            )
+                        }
+                    )
+                }
+             )
 
-        Divider(modifier = Modifier.padding(0.dp,20.dp))
+        Divider(modifier = Modifier.padding(0.dp, 20.dp))
 
-        LazyColumn{
+        LazyColumn {
             items(names) { currentName ->
                 Text(
                     text = currentName,
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(16.dp)
+                        .clickable { }
+                        .pointerInput(Unit) {    //For Double click event
+                            detectTapGestures(
+                                onDoubleTap = {
+                                    context.startActivity(
+                                        Intent(
+                                            context,
+                                            BasicStateHandle::class.java
+                                        )
+                                    )
+                                }
+                            )
+                        }
                 )
                 Divider()
             }

@@ -13,16 +13,36 @@
         android:theme="@style/Theme.ComposePracticeDemoApp"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".HomeScreen"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.ComposePracticeDemoApp">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
+        <activity
+            android:name=".ListCompose"
+            android:exported="false"
+            android:label="@string/title_activity_list_compose"
+            android:theme="@style/Theme.ComposePracticeDemoApp" />
+        <activity
+            android:name=".BasicFields"
+            android:exported="false"
+            android:label="@string/title_activity_basic_fields"
+            android:theme="@style/Theme.ComposePracticeDemoApp" />
+        <activity
+            android:name=".BasicStateHandle"
+            android:exported="false"
+            android:label="@string/title_activity_basic_state_handle"
+            android:theme="@style/Theme.ComposePracticeDemoApp" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ComposePracticeDemoApp"/>
+
     </application>
 
 </manifest>
