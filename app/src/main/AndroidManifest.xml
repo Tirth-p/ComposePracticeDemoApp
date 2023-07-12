@@ -13,15 +13,20 @@
         android:theme="@style/Theme.ComposePracticeDemoApp"
         tools:targetApi="31">
         <activity
+            android:name=".SimpleAnimation"
+            android:exported="false"
+            android:label="@string/title_activity_simple_animation"
+            android:theme="@style/Theme.ComposePracticeDemoApp" />
+        <activity
             android:name=".HomeScreen"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.ComposePracticeDemoApp">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".ListCompose"
@@ -41,8 +46,8 @@
         <activity
             android:name=".MainActivity"
             android:exported="false"
-            android:theme="@style/Theme.ComposePracticeDemoApp"/>
-
+            android:label="@string/main_activity"
+            android:theme="@style/Theme.ComposePracticeDemoApp" />
     </application>
 
 </manifest>

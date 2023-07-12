@@ -39,6 +39,7 @@ fun HomeScreenConstraintLayout() {
         val btnBasicFields = createRefFor("btnBasicFields")
         val btnBasicStateHandle = createRefFor("btnBasicStateHandle")
         val btnListCompose = createRefFor("btnListCompose")
+        val btnSimpleAnimation = createRefFor("btnSimpleAnimation")
 
         constrain(btnMainActivity) {
             top.linkTo(parent.top, margin = 20.dp)
@@ -72,6 +73,11 @@ fun HomeScreenConstraintLayout() {
             height = Dimension.wrapContent
         }
 
+        constrain(btnSimpleAnimation){
+            top.linkTo(btnBasicStateHandle.bottom, margin = 20.dp)
+            start.linkTo(parent.start)
+            end.linkTo(parent.end)
+        }
         createHorizontalChain(btnBasicStateHandle,btnListCompose, chainStyle = ChainStyle.Packed)
     }
     ConstraintLayout(constraints, modifier = Modifier.fillMaxSize()) {
@@ -110,6 +116,15 @@ fun HomeScreenConstraintLayout() {
                 .layoutId("btnListCompose")
         ) {
             Text(text = "Basic List Compose")
+        }
+        Button(
+            onClick = {
+                context.startActivity(Intent(context, SimpleAnimation::class.java))
+            },
+            modifier = Modifier
+                .layoutId("btnSimpleAnimation")
+        ) {
+            Text(text = "Simple Animation")
         }
     }
 }

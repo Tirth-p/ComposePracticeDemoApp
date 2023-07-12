@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">ComposePracticeDemoApp</string>
+    <string name="main_activity">MainActivity</string>
     <string name="title_activity_basic_state_handle">BasicStateHandle</string>
     <string name="title_activity_basic_fields">BasicFields</string>
     <string name="title_activity_list_compose">ListCompose</string>
     <string name="title_activity_home_screen">HomeScreen</string>
+    <string name="title_activity_simple_animation">SimpleAnimation</string>
 </resources>
