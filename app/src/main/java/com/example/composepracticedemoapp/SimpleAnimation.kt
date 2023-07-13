@@ -82,7 +82,7 @@ fun SimpleAnimationBox() {
         Column {
             Button(onClick = {
                 if (sizeState == 800.dp)
-                    Toast.makeText(context, "Max Size", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Max Size", Toast.LENGTH_SHORT).show()
                 else
                     sizeState += 50.dp
 
@@ -91,7 +91,7 @@ fun SimpleAnimationBox() {
             }
             Button(onClick = {
                 if (sizeState == 150.dp)
-                    Toast.makeText(context, "Min Size", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Min Size", Toast.LENGTH_SHORT).show()
                 else
                     sizeState -= 50.dp
 

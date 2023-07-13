@@ -6,4 +6,6 @@
     <string name="title_activity_list_compose">ListCompose</string>
     <string name="title_activity_home_screen">HomeScreen</string>
     <string name="title_activity_simple_animation">SimpleAnimation</string>
+    <string name="title_activity_circular_progress_bar">CircularProgressBar</string>
+    <string name="title_activity_draggable_music_knob">DraggableMusicKnob</string>
 </resources>

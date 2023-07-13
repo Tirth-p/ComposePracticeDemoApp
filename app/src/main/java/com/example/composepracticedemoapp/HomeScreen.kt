@@ -40,6 +40,8 @@ fun HomeScreenConstraintLayout() {
         val btnBasicStateHandle = createRefFor("btnBasicStateHandle")
         val btnListCompose = createRefFor("btnListCompose")
         val btnSimpleAnimation = createRefFor("btnSimpleAnimation")
+        val btnProgressBar = createRefFor("btnProgressBar")
+        val btnMusicKnob = createRefFor("btnMusicKnob")
 
         constrain(btnMainActivity) {
             top.linkTo(parent.top, margin = 20.dp)
@@ -73,13 +75,27 @@ fun HomeScreenConstraintLayout() {
             height = Dimension.wrapContent
         }
 
-        constrain(btnSimpleAnimation){
+        constrain(btnSimpleAnimation) {
             top.linkTo(btnBasicStateHandle.bottom, margin = 20.dp)
             start.linkTo(parent.start)
             end.linkTo(parent.end)
         }
-        createHorizontalChain(btnBasicStateHandle,btnListCompose, chainStyle = ChainStyle.Packed)
+        createHorizontalChain(btnBasicStateHandle, btnListCompose, chainStyle = ChainStyle.Packed)
+
+        constrain(btnProgressBar) {
+            top.linkTo(btnSimpleAnimation.bottom)
+            start.linkTo(parent.start)
+            end.linkTo(parent.end)
+        }
+
+        constrain(btnMusicKnob) {
+            top.linkTo(btnSimpleAnimation.bottom)
+            start.linkTo(btnProgressBar.end)
+            end.linkTo(parent.end)
+        }
+        createHorizontalChain(btnProgressBar, btnMusicKnob, chainStyle = ChainStyle.SpreadInside)
     }
+
     ConstraintLayout(constraints, modifier = Modifier.fillMaxSize()) {
 
         Button(modifier = Modifier
@@ -125,6 +141,32 @@ fun HomeScreenConstraintLayout() {
                 .layoutId("btnSimpleAnimation")
         ) {
             Text(text = "Simple Animation")
+        }
+        Button(
+            onClick = {
+                context.startActivity(
+                    Intent(
+                        context,
+                        CircularProgressBar::class.java
+                    )
+                )
+            },
+            modifier = Modifier.layoutId("btnProgressBar")
+        ) {
+            Text(text = "Progress Bar")
+        }
+        Button(
+            onClick = {
+                context.startActivity(
+                    Intent(
+                        context,
+                        DraggableMusicKnob::class.java
+                    )
+                )
+            },
+            modifier = Modifier.layoutId("btnMusicKnob")
+        ) {
+            Text(text = "Music Knob")
         }
     }
 }
