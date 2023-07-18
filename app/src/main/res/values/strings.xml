@@ -8,4 +8,5 @@
     <string name="title_activity_simple_animation">SimpleAnimation</string>
     <string name="title_activity_circular_progress_bar">CircularProgressBar</string>
     <string name="title_activity_draggable_music_knob">DraggableMusicKnob</string>
+    <string name="title_activity_meditation_ui">MeditationUi</string>
 </resources>

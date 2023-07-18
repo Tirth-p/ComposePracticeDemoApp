@@ -13,6 +13,11 @@
         android:theme="@style/Theme.ComposePracticeDemoApp"
         tools:targetApi="31">
         <activity
+            android:name=".MeditationUi"
+            android:exported="false"
+            android:label="@string/title_activity_meditation_ui"
+            android:theme="@style/Theme.ComposePracticeDemoApp" />
+        <activity
             android:name=".DraggableMusicKnob"
             android:exported="false"
             android:label="@string/title_activity_draggable_music_knob"

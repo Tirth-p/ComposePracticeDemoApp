@@ -42,6 +42,7 @@ fun HomeScreenConstraintLayout() {
         val btnSimpleAnimation = createRefFor("btnSimpleAnimation")
         val btnProgressBar = createRefFor("btnProgressBar")
         val btnMusicKnob = createRefFor("btnMusicKnob")
+        val btnMeditationUi = createRefFor("btnMeditationUi")
 
         constrain(btnMainActivity) {
             top.linkTo(parent.top, margin = 20.dp)
@@ -83,17 +84,23 @@ fun HomeScreenConstraintLayout() {
         createHorizontalChain(btnBasicStateHandle, btnListCompose, chainStyle = ChainStyle.Packed)
 
         constrain(btnProgressBar) {
-            top.linkTo(btnSimpleAnimation.bottom)
+            top.linkTo(btnSimpleAnimation.bottom, margin = 20.dp)
             start.linkTo(parent.start)
             end.linkTo(parent.end)
         }
 
         constrain(btnMusicKnob) {
-            top.linkTo(btnSimpleAnimation.bottom)
+            top.linkTo(btnSimpleAnimation.bottom, margin = 20.dp)
             start.linkTo(btnProgressBar.end)
             end.linkTo(parent.end)
         }
         createHorizontalChain(btnProgressBar, btnMusicKnob, chainStyle = ChainStyle.SpreadInside)
+
+        constrain(btnMeditationUi) {
+            top.linkTo(btnMusicKnob.bottom, margin = 20.dp)
+            start.linkTo(parent.start)
+            end.linkTo(parent.end)
+        }
     }
 
     ConstraintLayout(constraints, modifier = Modifier.fillMaxSize()) {
@@ -167,6 +174,19 @@ fun HomeScreenConstraintLayout() {
             modifier = Modifier.layoutId("btnMusicKnob")
         ) {
             Text(text = "Music Knob")
+        }
+        Button(
+            onClick = {
+                context.startActivity(
+                    Intent(
+                        context,
+                        MeditationUi::class.java
+                    )
+                )
+            },
+            Modifier.layoutId("btnMeditationUi")
+        ) {
+            Text(text = "Meditation Design")
         }
     }
 }
