@@ -64,7 +64,7 @@ fun HomeMeditation() {
                     ),
                     Feature(
                         title = "Calming sounds",
-                        R.drawable.ic_headphone,
+                        R.drawable.ic_music,
                         Beige1,
                         Beige2,
                         Beige3
@@ -72,15 +72,15 @@ fun HomeMeditation() {
                 )
             )
         }
-            BottomMenu(items = listOf(
+        BottomMenu(
+            items = listOf(
                 BottomMenuContent("Home", R.drawable.ic_home),
                 BottomMenuContent("Meditate", R.drawable.ic_bubble),
                 BottomMenuContent("Sleep", R.drawable.ic_moon),
                 BottomMenuContent("Music", R.drawable.ic_music),
                 BottomMenuContent("Profile", R.drawable.ic_profile),
             ), modifier = Modifier.align(Alignment.BottomCenter)
-            )
-
+        )
     }
 }
 
@@ -153,15 +153,14 @@ fun CurrentMeditation() {
             .clip(RoundedCornerShape(10.dp))
             .background(LightRed)
     ) {
-
         val width = constraints.maxWidth
         val height = constraints.maxHeight
 
         // Medium colored path
-        val meditationPoint1 =  Offset(0f, height * 0.3f)
-        val meditationPoint2 =  Offset(width * 0.4f, height * -0.05f)
-        val meditationPoint3 =  Offset(width * 0.1f, height * 0.35f)
-        val meditationPoint4 =  Offset(width * 0.70f, height * 0.9f)
+        val meditationPoint1 = Offset(0f, height * 0.3f)
+        val meditationPoint2 = Offset(width * 0.4f, height * -0.05f)
+        val meditationPoint3 = Offset(width * 0.1f, height * 0.35f)
+        val meditationPoint4 = Offset(width * 0.70f, height * 0.9f)
         val meditationPoint5 = Offset(width * 1.4f, -height * 0.8f)
 
 
@@ -381,7 +380,7 @@ fun BottomMenuItem(
     activeHighlightColor: Color = ButtonBlue,
     activeTextColor: Color = Color.White,
     inactiveTextColor: Color = AquaBlue,
-    onItemClick: () -> Unit
+    onItemClick: () -> Unit,
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -406,7 +405,7 @@ fun BottomMenuItem(
         }
         Text(
             text = item.title,
-            color = if(isSelected) activeTextColor else inactiveTextColor
+            color = if (isSelected) activeTextColor else inactiveTextColor
         )
     }
 }

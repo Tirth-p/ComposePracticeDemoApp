@@ -1,6 +1,7 @@
 package com.example.composepracticedemoapp.ui.theme
 
 import androidx.compose.material3.Typography
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -21,7 +22,7 @@ val gothicA1 = FontFamily(
 // Set of Material typography styles to start with
 val Typography = Typography(
     bodyLarge = TextStyle(
-        color = AquaBlue,
+        color = Color.Black,
         fontFamily = gothicA1,
         fontWeight = FontWeight.Normal,
         fontSize = 14.sp

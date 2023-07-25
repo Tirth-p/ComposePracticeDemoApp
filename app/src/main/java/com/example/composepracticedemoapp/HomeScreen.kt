@@ -43,6 +43,7 @@ fun HomeScreenConstraintLayout() {
         val btnProgressBar = createRefFor("btnProgressBar")
         val btnMusicKnob = createRefFor("btnMusicKnob")
         val btnMeditationUi = createRefFor("btnMeditationUi")
+        val btnInstaProfile = createRefFor("btnInstaProfile")
 
         constrain(btnMainActivity) {
             top.linkTo(parent.top, margin = 20.dp)
@@ -98,6 +99,12 @@ fun HomeScreenConstraintLayout() {
 
         constrain(btnMeditationUi) {
             top.linkTo(btnMusicKnob.bottom, margin = 20.dp)
+            start.linkTo(parent.start)
+            end.linkTo(parent.end)
+        }
+
+        constrain(btnInstaProfile) {
+            top.linkTo(btnMeditationUi.bottom, margin = 20.dp)
             start.linkTo(parent.start)
             end.linkTo(parent.end)
         }
@@ -187,6 +194,20 @@ fun HomeScreenConstraintLayout() {
             Modifier.layoutId("btnMeditationUi")
         ) {
             Text(text = "Meditation Design")
+        }
+
+        Button(
+            onClick = {
+                context.startActivity(
+                    Intent(
+                        context,
+                        InstaProfile::class.java
+                    )
+                )
+            },
+            Modifier.layoutId("btnInstaProfile")
+        ) {
+            Text(text = "Insta Profile")
         }
     }
 }
