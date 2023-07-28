@@ -24,6 +24,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -101,35 +102,49 @@ fun ProfileScreen() {
                 ImageWithText(
                     image = painterResource(id = R.drawable.profile),
                     text = "Profile"
-                ),
+                )
             )
         ) {
             selectedTabIndex = it
         }
+        val context = LocalContext.current
+        val postImage = (1..18).map {
+            painterResource(
+                id = context.resources.getIdentifier(
+                    "ig_post$it",
+                    "drawable",
+                    context.packageName
+                )
+            )
+        }
+
         when (selectedTabIndex) {
             0 -> PostSection(
-                postImage = listOf(
-                    painterResource(id = R.drawable.ig_post1),
-                    painterResource(id = R.drawable.ig_post2),
-                    painterResource(id = R.drawable.ig_post3),
-                    painterResource(id = R.drawable.ig_post4),
-                    painterResource(id = R.drawable.ig_post5),
-                    painterResource(id = R.drawable.ig_post6),
-                    painterResource(id = R.drawable.ig_post7),
-                    painterResource(id = R.drawable.ig_post8),
-                    painterResource(id = R.drawable.ig_post9),
-                    painterResource(id = R.drawable.ig_post10),
-                    painterResource(id = R.drawable.ig_post11),
-                    painterResource(id = R.drawable.ig_post12),
-                    painterResource(id = R.drawable.ig_post13),
-                    painterResource(id = R.drawable.ig_post14),
-                    painterResource(id = R.drawable.ig_post15),
-                    painterResource(id = R.drawable.ig_post16),
-                    painterResource(id = R.drawable.ig_post17),
-                    painterResource(id = R.drawable.ig_post18),
-                ),
+                postImage = postImage,
                 modifier = Modifier.fillMaxWidth()
             )
+            /*  postImage = listOf(
+                  painterResource(id = R.drawable.ig_post1),
+                  painterResource(id = R.drawable.ig_post2),
+                  painterResource(id = R.drawable.ig_post3),
+                  painterResource(id = R.drawable.ig_post4),
+                  painterResource(id = R.drawable.ig_post5),
+                  painterResource(id = R.drawable.ig_post6),
+                  painterResource(id = R.drawable.ig_post7),
+                  painterResource(id = R.drawable.ig_post8),
+                  painterResource(id = R.drawable.ig_post9),
+                  painterResource(id = R.drawable.ig_post10),
+                  painterResource(id = R.drawable.ig_post11),
+                  painterResource(id = R.drawable.ig_post12),
+                  painterResource(id = R.drawable.ig_post13),
+                  painterResource(id = R.drawable.ig_post14),
+                  painterResource(id = R.drawable.ig_post15),
+                  painterResource(id = R.drawable.ig_post16),
+                  painterResource(id = R.drawable.ig_post17),
+                  painterResource(id = R.drawable.ig_post18),
+              ),
+              modifier = Modifier.fillMaxWidth()
+          )*/
         }
     }
 }
