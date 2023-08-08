@@ -13,6 +13,16 @@
         android:theme="@style/Theme.ComposePracticeDemoApp"
         tools:targetApi="31">
         <activity
+            android:name=".MultiLayerScroll"
+            android:exported="false"
+            android:label="@string/title_activity_multi_layer_scroll"
+            android:theme="@style/Theme.ComposePracticeDemoApp" />
+        <activity
+            android:name=".BadgesBottomNavBar"
+            android:exported="false"
+            android:label="@string/title_activity_badges_bottom_nav_bar"
+            android:theme="@style/Theme.ComposePracticeDemoApp" />
+        <activity
             android:name=".InstaProfile"
             android:exported="false"
             android:label="@string/title_activity_insta_profile"

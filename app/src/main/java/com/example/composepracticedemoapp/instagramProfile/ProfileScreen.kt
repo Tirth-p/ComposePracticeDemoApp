@@ -56,37 +56,32 @@ fun ProfileScreen() {
         Spacer(modifier = Modifier.height(25.dp))
         HighlightSection(
             highlights = listOf(
+                R.drawable.me_highlight to "\uD83D\uDC40✨",
+                R.drawable.location_highlight to "\uD83D\uDCCD",
+                R.drawable.camera_highlight to "\uD83D\uDCF8",
+                R.drawable.graduation_highlight to "\uD83C\uDF93\uD83D\uDDC8",
+                R.drawable.memories_highlight to "\uD83E\uDD0D\uD83E\uDD0D",
+                R.drawable.boomerang_highlight to "♾️"
+            ).map { (imageResource, text) ->
                 StoryHighlight(
-                    image = painterResource(id = R.drawable.me_highlight),
-                    text = "\uD83D\uDC40✨"
-                ),
-                StoryHighlight(
-                    image = painterResource(id = R.drawable.location_highlight),
-                    text = "\uD83D\uDCCD"
-                ),
-                StoryHighlight(
-                    image = painterResource(id = R.drawable.camera_highlight),
-                    text = "\uD83D\uDCF8"
-                ),
-                StoryHighlight(
-                    image = painterResource(id = R.drawable.graduation_highlight),
-                    text = "\uD83C\uDF93\uD83D\uDDC8"
-                ),
-                StoryHighlight(
-                    image = painterResource(id = R.drawable.memories_highlight),
-                    text = "\uD83E\uDD0D\uD83E\uDD0D"
-                ),
-                StoryHighlight(
-                    image = painterResource(id = R.drawable.boomerang_highlight),
-                    text = "♾️"
-                ),
-            ),
+                    painterResource(id = imageResource),
+                    text = text
+                )
+            },
             modifier = Modifier
                 .fillMaxWidth()
         )
         Spacer(modifier = Modifier.height(10.dp))
         PostTabView(
             imageWithTexts = listOf(
+                R.drawable.ic_grid to "Post",
+                R.drawable.ic_reels to "Reels",
+                R.drawable.ic_igtv to "IGTV",
+                R.drawable.profile to "Profile"
+            ).map { (imgR, text) ->
+                ImageWithText(image = painterResource(id = imgR), text = text)
+            }
+            /*imageWithTexts = listOf(
                 ImageWithText(
                     image = painterResource(id = R.drawable.ic_grid),
                     text = "Posts"
@@ -103,7 +98,7 @@ fun ProfileScreen() {
                     image = painterResource(id = R.drawable.profile),
                     text = "Profile"
                 )
-            )
+            )*/
         ) {
             selectedTabIndex = it
         }

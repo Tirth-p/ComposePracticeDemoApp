@@ -10,4 +10,6 @@
     <string name="title_activity_draggable_music_knob">DraggableMusicKnob</string>
     <string name="title_activity_meditation_ui">MeditationUi</string>
     <string name="title_activity_insta_profile">InstaProfile</string>
+    <string name="title_activity_badges_bottom_nav_bar">BadgesBottomNavBar</string>
+    <string name="title_activity_multi_layer_scroll">MultiLayerScroll</string>
 </resources>

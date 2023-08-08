@@ -33,7 +33,6 @@ class HomeScreen : ComponentActivity() {
 // Jetpack compose with Constraint Layout  (Add dependency first)
 @Composable
 fun HomeScreenConstraintLayout() {
-    val context = LocalContext.current
     val constraints = ConstraintSet {
         val btnMainActivity = createRefFor("btnMainActivity")
         val btnBasicFields = createRefFor("btnBasicFields")
@@ -44,6 +43,7 @@ fun HomeScreenConstraintLayout() {
         val btnMusicKnob = createRefFor("btnMusicKnob")
         val btnMeditationUi = createRefFor("btnMeditationUi")
         val btnInstaProfile = createRefFor("btnInstaProfile")
+        val btnBottomNavBar = createRefFor("btnBottomNavBar")
 
         constrain(btnMainActivity) {
             top.linkTo(parent.top, margin = 20.dp)
@@ -100,115 +100,103 @@ fun HomeScreenConstraintLayout() {
         constrain(btnMeditationUi) {
             top.linkTo(btnMusicKnob.bottom, margin = 20.dp)
             start.linkTo(parent.start)
-            end.linkTo(parent.end)
         }
 
         constrain(btnInstaProfile) {
+            top.linkTo(btnMusicKnob.bottom, margin = 20.dp)
+            end.linkTo(parent.end)
+        }
+        createHorizontalChain(btnMeditationUi, btnInstaProfile, chainStyle = ChainStyle.Spread)
+
+        constrain(btnBottomNavBar) {
             top.linkTo(btnMeditationUi.bottom, margin = 20.dp)
             start.linkTo(parent.start)
-            end.linkTo(parent.end)
         }
     }
 
     ConstraintLayout(constraints, modifier = Modifier.fillMaxSize()) {
 
-        Button(modifier = Modifier
-            .layoutId("btnMainActivity"),
-            onClick = {
-                context.startActivity(Intent(context, MainActivity::class.java))
-            }) {
-            Text(text = "Main Activity")
-        }
+        IntentButton(
+            modifier = Modifier.layoutId("btnMainActivity"),
+            className = MainActivity::class.java
+        )
 
-        Button(
-            onClick = {
-                context.startActivity(Intent(context, BasicFields::class.java))
-            },
-            modifier = Modifier
-                .layoutId("btnBasicFields")
-        ) {
-            Text(text = "Basic Fields")
-        }
-        Button(
-            onClick = {
-                context.startActivity(Intent(context, BasicStateHandle::class.java))
-            },
-            modifier = Modifier
-                .layoutId("btnBasicStateHandle")
-        ) {
-            Text(text = "Basic State Handle")
-        }
-        Button(
-            onClick = {
-                context.startActivity(Intent(context, ListCompose::class.java))
-            },
-            modifier = Modifier
-                .layoutId("btnListCompose")
-        ) {
-            Text(text = "Basic List Compose")
-        }
-        Button(
-            onClick = {
-                context.startActivity(Intent(context, SimpleAnimation::class.java))
-            },
-            modifier = Modifier
-                .layoutId("btnSimpleAnimation")
-        ) {
-            Text(text = "Simple Animation")
-        }
-        Button(
-            onClick = {
-                context.startActivity(
-                    Intent(
-                        context,
-                        CircularProgressBar::class.java
-                    )
-                )
-            },
-            modifier = Modifier.layoutId("btnProgressBar")
-        ) {
-            Text(text = "Progress Bar")
-        }
-        Button(
-            onClick = {
-                context.startActivity(
-                    Intent(
-                        context,
-                        DraggableMusicKnob::class.java
-                    )
-                )
-            },
-            modifier = Modifier.layoutId("btnMusicKnob")
-        ) {
-            Text(text = "Music Knob")
-        }
-        Button(
-            onClick = {
-                context.startActivity(
-                    Intent(
-                        context,
-                        MeditationUi::class.java
-                    )
-                )
-            },
-            Modifier.layoutId("btnMeditationUi")
-        ) {
-            Text(text = "Meditation Design")
-        }
+        IntentButton(
+            modifier = Modifier.layoutId("btnBasicFields"),
+            className = BasicFields::class.java
+        )
 
-        Button(
-            onClick = {
-                context.startActivity(
-                    Intent(
-                        context,
-                        InstaProfile::class.java
-                    )
+        IntentButton(
+            modifier = Modifier.layoutId("btnBasicStateHandle"),
+            className = BasicStateHandle::class.java
+        )
+
+        IntentButton(
+            modifier = Modifier.layoutId("btnListCompose"),
+            className = ListCompose::class.java
+        )
+
+        IntentButton(
+            modifier = Modifier.layoutId("btnSimpleAnimation"),
+            className = SimpleAnimation::class.java
+        )
+
+        IntentButton(
+            modifier = Modifier.layoutId("btnProgressBar"),
+            className = CircularProgressBar::class.java
+        )
+
+        IntentButton(
+            modifier = Modifier.layoutId("btnMusicKnob"),
+            className = DraggableMusicKnob::class.java
+        )
+
+        IntentButton(
+            modifier = Modifier.layoutId("btnMeditationUi"),
+            className = MeditationUi::class.java
+        )
+
+        IntentButton(
+            modifier = Modifier.layoutId("btnInstaProfile"),
+            className = InstaProfile::class.java,
+            text = "Insta Profile"
+        )
+
+        IntentButton(
+            modifier = Modifier.layoutId("btnBottomNavBar"),
+            className = BadgesBottomNavBar::class.java,
+            text = "BottomNavBar"
+        )
+    }
+}
+
+/**
+ * Just a simple button for display constraintsLayout buttons.
+ * @param modifier layoutId Modifier to be link button with defined the constraintsLayout ID.
+ * @param className pass a class name (like classname::class.java) to redirect on that class)
+ * @param text default null if you won't pass anything then it will display classname as a button text.
+ *
+ * Created by Tirth Patel.
+ */
+@Composable
+fun IntentButton(
+    modifier: Modifier,
+    className: Class<*>,
+    text: String? = null,
+) {
+    val context = LocalContext.current
+    Button(
+        onClick = {
+            context.startActivity(
+                Intent(
+                    context,
+                    className
                 )
-            },
-            Modifier.layoutId("btnInstaProfile")
-        ) {
-            Text(text = "Insta Profile")
-        }
+            )
+        },
+        modifier = modifier
+    ) {
+        Text(text = text ?: className.simpleName)
     }
 }
 
