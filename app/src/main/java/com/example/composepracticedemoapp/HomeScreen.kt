@@ -44,6 +44,8 @@ fun HomeScreenConstraintLayout() {
         val btnMeditationUi = createRefFor("btnMeditationUi")
         val btnInstaProfile = createRefFor("btnInstaProfile")
         val btnBottomNavBar = createRefFor("btnBottomNavBar")
+        val btnHandleButtonClick = createRefFor("btnHandleButtonClick")
+        val btnMultiSelectLazyColumn = createRefFor("btnMultiSelectLazyColumn")
 
         constrain(btnMainActivity) {
             top.linkTo(parent.top, margin = 20.dp)
@@ -112,6 +114,16 @@ fun HomeScreenConstraintLayout() {
             top.linkTo(btnMeditationUi.bottom, margin = 20.dp)
             start.linkTo(parent.start)
         }
+
+        constrain(btnHandleButtonClick) {
+            top.linkTo(btnMeditationUi.bottom, margin = 20.dp)
+            end.linkTo(parent.end)
+        }
+
+        constrain(btnMultiSelectLazyColumn) {
+            top.linkTo(btnHandleButtonClick.bottom, margin = 20.dp)
+            start.linkTo(parent.start)
+        }
     }
 
     ConstraintLayout(constraints, modifier = Modifier.fillMaxSize()) {
@@ -158,14 +170,23 @@ fun HomeScreenConstraintLayout() {
 
         IntentButton(
             modifier = Modifier.layoutId("btnInstaProfile"),
-            className = InstaProfile::class.java,
-            text = "Insta Profile"
+            className = InstaProfile::class.java
         )
 
         IntentButton(
             modifier = Modifier.layoutId("btnBottomNavBar"),
             className = BadgesBottomNavBar::class.java,
             text = "BottomNavBar"
+        )
+
+        IntentButton(
+            modifier = Modifier.layoutId("btnHandleButtonClick"),
+            className = HandleButtonCallBack::class.java
+        )
+
+        IntentButton(
+            modifier = Modifier.layoutId("btnMultiSelectLazyColumn"),
+            className = MultiSelectLazyColumn::class.java
         )
     }
 }

@@ -13,6 +13,16 @@
         android:theme="@style/Theme.ComposePracticeDemoApp"
         tools:targetApi="31">
         <activity
+            android:name=".MultiSelectLazyColumn"
+            android:exported="false"
+            android:label="@string/title_activity_multi_select_lazy_column"
+            android:theme="@style/Theme.ComposePracticeDemoApp" />
+        <activity
+            android:name=".HandleButtonCallBack"
+            android:exported="false"
+            android:label="@string/title_activity_handle_button_call_back"
+            android:theme="@style/Theme.ComposePracticeDemoApp" />
+        <activity
             android:name=".MultiLayerScroll"
             android:exported="false"
             android:label="@string/title_activity_multi_layer_scroll"
