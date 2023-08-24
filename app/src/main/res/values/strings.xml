@@ -14,4 +14,5 @@
     <string name="title_activity_multi_layer_scroll">MultiLayerScroll</string>
     <string name="title_activity_handle_button_call_back">HandleButtonCallBack</string>
     <string name="title_activity_multi_select_lazy_column">MultiSelectLazyColumn</string>
+    <string name="title_activity_permission_handling">PermissionHandling</string>
 </resources>

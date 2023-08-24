@@ -4,10 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.platform.LocalContext
@@ -30,7 +32,7 @@ class HomeScreen : ComponentActivity() {
     }
 }
 
-// Jetpack compose with Constraint Layout  (Add dependency first)
+// Jetpack compose with Constraint Layout  (Add dependency for constraint layout)
 @Composable
 fun HomeScreenConstraintLayout() {
     val constraints = ConstraintSet {
@@ -46,6 +48,7 @@ fun HomeScreenConstraintLayout() {
         val btnBottomNavBar = createRefFor("btnBottomNavBar")
         val btnHandleButtonClick = createRefFor("btnHandleButtonClick")
         val btnMultiSelectLazyColumn = createRefFor("btnMultiSelectLazyColumn")
+        val btnPermissionHandle = createRefFor("btnPermissionHandle")
 
         constrain(btnMainActivity) {
             top.linkTo(parent.top, margin = 20.dp)
@@ -124,6 +127,11 @@ fun HomeScreenConstraintLayout() {
             top.linkTo(btnHandleButtonClick.bottom, margin = 20.dp)
             start.linkTo(parent.start)
         }
+
+        constrain(btnPermissionHandle) {
+            top.linkTo(btnHandleButtonClick.bottom, margin = 20.dp)
+            end.linkTo(parent.end)
+        }
     }
 
     ConstraintLayout(constraints, modifier = Modifier.fillMaxSize()) {
@@ -186,7 +194,13 @@ fun HomeScreenConstraintLayout() {
 
         IntentButton(
             modifier = Modifier.layoutId("btnMultiSelectLazyColumn"),
-            className = MultiSelectLazyColumn::class.java
+            className = MultiSelectLazyColumn::class.java,
+            text = "SelectColumn"
+        )
+
+        IntentButton(
+            modifier = Modifier.layoutId("btnPermissionHandle"),
+            className = PermissionHandling::class.java
         )
     }
 }

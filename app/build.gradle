@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace 'com.example.composepracticedemoapp'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.example.composepracticedemoapp"
         minSdk 24
-        targetSdk 33
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
@@ -84,5 +84,8 @@ dependencies {
     }
 
     implementation "com.google.accompanist:accompanist-systemuicontroller:0.19.0"
+
+    //Handle Permissions
+    implementation "com.google.accompanist:accompanist-permissions:0.21.1-beta"
 
 }

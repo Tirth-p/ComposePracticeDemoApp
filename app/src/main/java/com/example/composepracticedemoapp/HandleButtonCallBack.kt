@@ -37,7 +37,7 @@ fun DefaultFunction() {
         ),
     )
     {
-        Toast.makeText(context, "${it.name}", Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, it.name, Toast.LENGTH_SHORT).show()
     }
 }
 

@@ -112,13 +112,14 @@ fun BottomNavigationBar(
     ) {
         items.forEach { item ->
             val selected = item.route == backStackEntry.value?.destination?.route
+            val emptyInteractionSource = remember { MutableInteractionSource() }
             NavigationBarItem(
                 selected = selected,
                 onClick = {
                     OnItemClick(item)
                 },
+                interactionSource = emptyInteractionSource,
                 label = { Text(text = item.name) },
-                interactionSource = remember { MutableInteractionSource() },
                 colors = NavigationBarItemDefaults.colors(),
                 icon = {
                     Column(horizontalAlignment = CenterHorizontally) {
